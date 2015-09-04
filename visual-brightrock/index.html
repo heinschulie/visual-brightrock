@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="twitterApp" lang="en" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BrightRock Change Indicator</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="content/css/site.css" />
+
+    <!-- Codrops Tut -->
+    <link rel="stylesheet" type="text/css" href="content/css/fractals/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="content/css/fractals/demo.css" />
+    <link rel="stylesheet" type="text/css" href="content/css/fractals/card-4.css" />
+    <link rel="stylesheet" type="text/css" href="content/css/fractals/pattern-4.css" />
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script>
+        if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+            var root = document.getElementsByTagName('html')[0];
+            root.setAttribute('class', 'ff');
+        };
+    </script>
+</head>
+<body class="demo-4">
+
+    <div class="container" ng-controller="homeController">
+
+        <!--<button class="btn btn-primary" ng-click="fetchTwitterTrends()">Twitter</button>
+        <button class="btn btn-primary" ng-click="startVisual()">Start visual</button>-->
+
+        <a ng-click="fetchTwitterTrends()" ng-show="scene_1"><h1 class="mainhashtag">#SomethingTerrible</h1></a>
+        <div class="content">
+            <!-- trianglify pattern container -->
+            <div class="pattern pattern--hidden"></div>
+            <!-- cards -->
+            <div class="wrapper"></div>
+            <!-- /cards -->
+        </div>
+
+
+        <div ng-repeat="trend in trends">
+            <div class="wrapper">
+                <div class="card" ng-repeat="image in trend.photos| limitTo:8" ng-click="startd3()">
+                    <div class=" card__container card__container--closed">
+                    <svg class="card__image" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1200" preserveAspectRatio="xMidYMid slice">
+                        <defs>
+                            <clipPath id="clipPath1">
+                                <polygon class="clip" points="0,1200 0,0 1920,0 1920,1200"></polygon>
+                            </clipPath>
+                        </defs>
+                        <image clip-path="url(#clipPath1)" width="1920" height="1200" xlink:href="" ng:attr:xlink:href="{{image.images.low_resolution.url | trusted}}"></image>
+                    </svg>
+                    <div class="card__content"></div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+        <d3-circles circledata="circledata" hoverin="fetchTweetByIndex(index)" ng-show="scene_4"></d3-circles>
+        <!--<d3-bars data="data" bar-height="20" bar-padding="5"></d3-bars>-->
+
+        <div class="row">
+            <button ng-click="connectButton()" id="connectButton" type="button" class="btn btn-primary" ng-show="authRequired">Connect to Twitter</button>
+            <div class="col-xs-6">
+                <button ng-click="refreshTimeline()" id="getTimelineButton" type="button" class="btn btn-info" style="display:none;">Get My Timeline</button>
+                <button ng-click="signOut()" id="signOut" type="button" class="btn btn-link" style="display:none;">Sign Out</button>
+            </div>
+            <!--<div class="col-xs-6">
+                <input type="text" ng-model="searchTerm" class="form-control" id="searchBox" placeholder="Enter search term here" ng-show="connectedTwitter" />
+            </div>-->
+        </div>
+        <!--<div class="row">
+            <div class="col-xs-12" id="results">
+                <div class="row" ng-repeat="t in tweets | filter:searchTerm">
+
+                    <div class="col-xs-2 col-sm-1">
+                        <img ng-src="{{t.user.profile_image_url}}" class="img-circle">
+                    </div>
+                    <div class="col-xs-10 col-sm-11">
+                        <small>{{t.user.name}}</small>
+                        <br> <span ng-bind-html="t.text"></span>
+                    </div>
+                </div>
+
+                <div ng-show="rateLimitError">
+                    Rate limit reached. You are making too many requests.
+                </div>
+                <div>
+                    <br />
+                    <input type="button" class="btn btn-info" id="load-more" ng-click="refreshTimeline(tweets[tweets.length-1].id)" ng-show="connectedTwitter" value="Load More" />
+                </div>
+            </div>
+        </div>-->
+
+        <div ng-show="emotionrange" class="emotionrange">
+            <input type="range" ng-model="triangles" min="0" max="1" step="0.01" />
+        </div>
+    </div>
+
+    <!--<div data-ng-view="">
+    </div>-->
+
+    <!-- Angular Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-sanitize.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-touch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.2.1/trianglify.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="scripts/Oauthio.js"></script>
+    <script src="scripts/instafeed.js"></script>
+
+    <!---------------------------------- Codrops Tutorial ------------------------------------->
+    <!--<script src="scripts/js/vendors/trianglify.min.js"></script>-->
+    <script src="scripts/js/vendors/TweenMax.min.js"></script>
+    <script src="scripts/js/vendors/ScrollToPlugin.min.js"></script>
+    <script src="scripts/js/vendors/cash.min.js"></script>
+    <script src="scripts/js/Card-polygon-4.js"></script>
+    <script src="scripts/js/demo-4.js"></script>
+
+    <!---------------------------------- END TEMPORARY ------------------------------------->
+    <script src="app/services/d3Service.js"></script>
+    <!-- SwigBig -->
+    <script src="app/app.js"></script>
+
+    <!--Directives-->
+    <script src="app/directives/directives.js"></script>
+
+    <!-- Services -->
+    <script src="app/services/twitterService.js"></script>
+    <script src="app/services/instagramService.js"></script>
+
+    <!-- Controllers -->
+    <script src="app/controllers/homeController.js"></script>
+
+</body>
+</html>

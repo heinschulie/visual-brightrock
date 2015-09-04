@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "visual-brightrock", "visual-brightrock\visual-brightrock.csproj", "{2D894D7E-8EF7-40AF-B36E-A8A835FF4DBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{22D68107-6019-43CA-81E8-F889B9E286E8}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{845E3575-E5C7-428A-AE2F-C2324BC58EFC}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\visual-brightrock-WAWS-dev.json = PublishScripts\Configurations\visual-brightrock-WAWS-dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D894D7E-8EF7-40AF-B36E-A8A835FF4DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D894D7E-8EF7-40AF-B36E-A8A835FF4DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D894D7E-8EF7-40AF-B36E-A8A835FF4DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D894D7E-8EF7-40AF-B36E-A8A835FF4DBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{845E3575-E5C7-428A-AE2F-C2324BC58EFC} = {22D68107-6019-43CA-81E8-F889B9E286E8}
+	EndGlobalSection
+EndGlobal

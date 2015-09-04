@@ -1,0 +1,41 @@
+@import '_colours.scss'; 
+
+
+$base-font-family: "Helvetica Neue","Helvetica","Raleway","Arial",sans-serif;
+
+$base-font-size: 0.35em; 
+
+$accent-font-family: "Aliquam"; 
+//$accent-font-family: 'Raleway', sans-serif;
+
+@mixin navigation-font($fontsize: 0) {
+    font: {
+    family: $base-font-family; 
+    size: $base-font-size + $fontsize;
+  }
+    color: $secondary-colour;
+}
+
+@mixin basic-font() {
+    font: {
+    family: $base-font-family; 
+    size: $base-font-size;
+  }
+}
+
+@mixin heading-font($fontsize: 0.8) {
+    font: {
+    family: $base-font-family; 
+    size: $base-font-size + ($base-font-size * $fontsize);
+  }
+    color: $base-colour;
+}
+
+@mixin title-font($fontsize: 6) {
+    font: {
+    family: $accent-font-family; 
+    size: $base-font-size + ($base-font-size * $fontsize);
+    weight: bolder;
+  }
+    color: $accent-colour; 
+}

@@ -1,0 +1,223 @@
+
+@import '_colours.scss';
+@import '_fonts.scss';
+@import '_mixins.scss';
+@import "_home.scss";
+
+html {
+    position: relative;
+    min-height: 100%;
+    overflow-x: hidden; 
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    @include title-font;  
+    a{
+        -webkit-font-smoothing: antialiased;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    }
+}
+
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0; 
+    min-height: 100%;
+    min-width: 100%;
+    //height: 100%; 
+    xpadding-bottom: 10px;
+    @include basic-font(); 
+    line-height: 1.428571429;
+    color: $base-colour;
+    /*
+	 * Relates to the pseudo class & sibling bug, see
+	 * http://css-tricks.com/webkit-sibling-bug/ for more details
+	 */
+    -webkit-animation: bugfix infinite 1s;
+    
+}
+
+/*body::-webkit-scrollbar {
+    width: 0.2em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}*/
+
+/* Also relates to the pseudo class & sibling bug */
+@-webkit-keyframes bugfix { from { padding: 0; } to { padding: 0; } }
+
+a {
+    cursor: pointer; 
+    text-decoration: none; 
+    color: #428bca;
+}
+a:hover{
+    text-decoration: none; 
+}
+
+.viewContainer {
+	overflow-x: hidden;
+	overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#results .row {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.mainhashtag{
+    text-align: center;
+    margin-top: 20%;
+}
+
+.wrapper{
+    margin-top: -6% !important;
+    opacity: 0.2;
+    @include transition(all,1000ms,ease-out);
+    &:hover{
+        opacity: 1;
+    } 
+}
+
+.card{
+
+    width: 20% !important;
+
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: url(grayscale.svg); /* Firefox 4+ */
+    filter: gray; /* IE 6-9 */
+    @include transition(all,1000ms,ease-out);
+    &:hover{
+        -webkit-filter: grayscale(0);
+      -moz-filter: grayscale(0);
+      -ms-filter: grayscale(0);
+      -o-filter: grayscale(0);
+      filter: grayscale(0);
+      filter: url(grayscale.svg); /* Firefox 4+ */
+      filter: gray; /* IE 6-9 */
+    } 
+}
+
+.emotionrange{
+    background-image: url('../images/ColourBar.png');
+    background-size: cover;
+    width: 100%; 
+    position: absolute; 
+    height: 135px; 
+    left: 0; 
+    bottom: 0;
+
+    input{
+        position: absolute;
+        top: 33%;
+    }
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      margin: 8.5px 0;
+    }
+    input[type=range]:focus {
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 0px;
+      cursor: pointer;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+      background: rgba(0, 113, 169, 0);
+      border-radius: 1.3px;
+      border: 0.2px solid #010101;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      border: 0px solid #000000;
+      height: 17px;
+      width: 16px;
+      border-radius: 50px;
+      background: #ffffff;
+      cursor: pointer;
+      -webkit-appearance: none;
+      margin-top: -8.7px;
+    }
+    input[type=range]:focus::-webkit-slider-runnable-track {
+      background: rgba(0, 130, 195, 0);
+    }
+    input[type=range]::-moz-range-track {
+      width: 100%;
+      height: 0px;
+      cursor: pointer;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+      background: rgba(0, 113, 169, 0);
+      border-radius: 1.3px;
+      border: 0.2px solid #010101;
+    }
+    input[type=range]::-moz-range-thumb {
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      border: 0px solid #000000;
+      height: 17px;
+      width: 16px;
+      border-radius: 50px;
+      background: #ffffff;
+      cursor: pointer;
+    }
+    input[type=range]::-ms-track {
+      width: 100%;
+      height: 0px;
+      cursor: pointer;
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+    }
+    input[type=range]::-ms-fill-lower {
+      background: rgba(0, 96, 144, 0);
+      border: 0.2px solid #010101;
+      border-radius: 2.6px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+    }
+    input[type=range]::-ms-fill-upper {
+      background: rgba(0, 113, 169, 0);
+      border: 0.2px solid #010101;
+      border-radius: 2.6px;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0px 0px 1px rgba(13, 13, 13, 0);
+    }
+    input[type=range]::-ms-thumb {
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      border: 0px solid #000000;
+      height: 17px;
+      width: 16px;
+      border-radius: 50px;
+      background: #ffffff;
+      cursor: pointer;
+      height: 0px;
+    }
+    input[type=range]:focus::-ms-fill-lower {
+      background: rgba(0, 113, 169, 0);
+    }
+    input[type=range]:focus::-ms-fill-upper {
+      background: rgba(0, 130, 195, 0);
+    }
+}
+
+#connectButton{
+    position: absolute !important;
+    right: 2% !important;
+    bottom: 25% !important;
+}
